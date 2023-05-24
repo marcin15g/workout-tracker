@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "workout-trackerr": {
+      "hosting": {
+        "workout-tracker": [
+          "workout-trackerr"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "workout-trackerr"
+  }
+}

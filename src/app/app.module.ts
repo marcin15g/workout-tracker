@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,18 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AuthService } from './shared/services/auth.service';
 
+import { ButtonModule } from 'primeng/button';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
+
+const primeModules = [
+  ButtonModule,
+  ToolbarModule,
+  SidebarModule,
+  AvatarModule
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +34,9 @@ import { AuthService } from './shared/services/auth.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    ...primeModules,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())

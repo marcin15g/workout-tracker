@@ -35,16 +35,21 @@ export class AuthService implements OnDestroy {
  
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerified !== false;
+  }
+
+  get user(): User | null {
+    return this.currentUser || JSON.parse(localStorage.getItem('user')!);
   }
   
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider).then(
       (_) => {
-        this.router.navigate(['home']);
+        console.log("GOOGLE AUTH");
+        setTimeout(() => this.router.navigate(['home']), 3000);
     });
   }
-  
+
   AuthLogin(provider: any) {
     return signInWithPopup(this.auth, provider)
       .then((result) => {

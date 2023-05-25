@@ -46,7 +46,7 @@ export class AuthService implements OnDestroy {
     return this.AuthLogin(new GoogleAuthProvider).then(
       (_) => {
         console.log("GOOGLE AUTH");
-        setTimeout(() => this.router.navigate(['home']), 3000);
+        setTimeout(() => this.router.navigate(['home']), 100);
     });
   }
 

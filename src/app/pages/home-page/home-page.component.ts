@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '@angular/fire/auth';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,19 +8,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HomePageComponent {
 
-  public sidebarVisible: boolean = false;
-  public currentUser: User | null
-  public userImageUrl: string;
-
   constructor (
-    public authService: AuthService
-  ) {
-    this.currentUser = this.authService.user; 
-    this.userImageUrl = this.currentUser?.photoURL || '';
-  }
+    private router: Router
+  ) {}
 
-  signOut() {
-    this.authService.SignOut();
+  goToTraining() {
+    this.router.navigate(['select-workout']);
   }
 
 }

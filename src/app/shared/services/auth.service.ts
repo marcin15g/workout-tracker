@@ -1,6 +1,5 @@
 import { inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { Auth, User, user, authState, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { pipe, Subscription } from 'rxjs';
 
@@ -16,20 +15,17 @@ export class AuthService implements OnDestroy {
   public authStateSubscription: Subscription;
 
   constructor(
-    public afs: Firestore, 
     public router: Router,
     public ngZone: NgZone 
   ) {
     this.authStateSubscription = this.authState$.subscribe((user) => {
-      console.log("INITIAL USER CHECK ::: ", user);
       if (user) {
         this.currentUser = user;
         localStorage.setItem('user', JSON.stringify(this.currentUser));
-        JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
       }
+      JSON.parse(localStorage.getItem('user')!);
     });
   }
  

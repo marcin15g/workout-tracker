@@ -1,0 +1,19 @@
+<p-sidebar [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header"></ng-template>
+    <ng-template pTemplate="content"></ng-template>
+    <ng-template pTemplate="footer">
+        <div id="side-footer">
+            <p-avatar [image]="userImageUrl" styleClass="mr-2" size="large" shape="square"></p-avatar>
+            <p-button icon="pi pi-power-off" (click)="signOut()"></p-button>
+        </div>
+    </ng-template>
+</p-sidebar>
+
+<p-toolbar>
+    <div class="p-toolbar-group-start">
+        <p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+    </div>
+    <div class="p-toolbar-group-end">
+        <i class="pi pi-home" (click)="navigateHome()"></i>
+    </div>
+</p-toolbar>
